@@ -88,7 +88,10 @@ public class StubLoggingFilter extends OncePerRequestFilter {
     }
 
     private static void logRequestBody(ContentCachingRequestWrapper request, String prefix) {
-        logContent(request.getContentAsByteArray(), request.getContentType(), request.getCharacterEncoding(), prefix);
+        val content = request.getContentAsByteArray();
+        if (content.length > 0) {
+            logContent(content, request.getContentType(), request.getCharacterEncoding(), prefix);
+        }
     }
 
     private static void logResponse(ContentCachingResponseWrapper response, String prefix) {
@@ -98,23 +101,24 @@ public class StubLoggingFilter extends OncePerRequestFilter {
             response.getHeaders(headerName).forEach(headerValue ->
                 log.info("{} {}: {}", prefix, headerName, headerValue)));
         log.info("{}", prefix);
-        logContent(response.getContentAsByteArray(), response.getContentType(), response.getCharacterEncoding(), prefix);
+        val content = response.getContentAsByteArray();
+        if (content.length > 0) {
+            logContent(content, response.getContentType(), response.getCharacterEncoding(), prefix);
+        }
     }
 
     private static void logContent(byte[] content, String contentType, String contentEncoding, String prefix) {
-        if (content.length > 0) {
-            val mediaType = MediaType.valueOf(contentType);
-            val visible = VISIBLE_TYPES.stream().anyMatch(visibleType -> visibleType.includes(mediaType));
-            if (visible) {
-                try {
-                    val contentString = new String(content, contentEncoding);
-                    Stream.of(contentString.split("\r\n|\r|\n")).forEach(line -> log.info("{} {}", prefix, line));
-                } catch (UnsupportedEncodingException e) {
-                    log.info("{} [{} bytes content]", prefix, content.length);
-                }
-            } else {
+        val mediaType = MediaType.valueOf(contentType);
+        val visible = VISIBLE_TYPES.stream().anyMatch(visibleType -> visibleType.includes(mediaType));
+        if (visible) {
+            try {
+                val contentString = new String(content, contentEncoding);
+                Stream.of(contentString.split("\r\n|\r|\n")).forEach(line -> log.info("{} {}", prefix, line));
+            } catch (UnsupportedEncodingException e) {
                 log.info("{} [{} bytes content]", prefix, content.length);
             }
+        } else {
+            log.info("{} [{} bytes content]", prefix, content.length);
         }
     }
 
