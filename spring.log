@@ -1,11 +1,18 @@
-2017-10-31 17:08:18.686  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1> GET /numbers?order=asc
-2017-10-31 17:08:18.688  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1> User-Agent: curl/7.54.0
-2017-10-31 17:08:18.688  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1> Accept: */*
-2017-10-31 17:08:18.688  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1> Host: 127.0.0.1:8080
-2017-10-31 17:08:18.688  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1>
-2017-10-31 17:08:18.777  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1< 200 OK
-2017-10-31 17:08:18.778  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1< Content-Length: 10
-2017-10-31 17:08:18.779  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1< Date: Tue, 31 Oct 2017 08:08:18 GMT
-2017-10-31 17:08:18.779  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1< Content-Type: application/json
-2017-10-31 17:08:18.779  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1<
-2017-10-31 17:08:18.779  INFO 11380 --- [qtp987950392-32] Example  : 127.0.0.1< [1, 2, 3]
+2017-11-03 13:33:18.777  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> POST /users?v=1
+2017-11-03 13:33:18.778  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> User-Agent: curl/7.54.0
+2017-11-03 13:33:18.778  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> Host: localhost:8080
+2017-11-03 13:33:18.778  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> Accept: */*
+2017-11-03 13:33:18.778  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> Content-Length: 24
+2017-11-03 13:33:18.778  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> Content-Type: application/json
+2017-11-03 13:33:18.778  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|>
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|> {"id": 1, "name": "Foo"}
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|< 200 OK
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|< Content-Length: 49
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|< Date: Fri, 03 Nov 2017 04:33:18 GMT
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|< Content-Type: application/json
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|<
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|< {
+2017-11-03 13:33:18.784  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|<   "id": 1,
+2017-11-03 13:33:18.785  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|<   "name": "Foo",
+2017-11-03 13:33:18.785  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|<   "active": true
+2017-11-03 13:33:18.785  INFO 17287 --- [tp1860754643-33] RequestAndResponseLoggingFilter  : 0:0:0:0:0:0:0:1|< }
