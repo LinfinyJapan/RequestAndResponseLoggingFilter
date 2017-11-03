@@ -28,7 +28,6 @@ import java.util.stream.Stream;
  * @see ContentCachingResponseWrapper
  */
 @Slf4j
-@ConditionalOnProperty(value = "no-request-response-log", matchIfMissing = true)
 @Component
 public class StubLoggingFilter extends OncePerRequestFilter {
     private static final List<MediaType> VISIBLE_TYPES = Arrays.asList(
