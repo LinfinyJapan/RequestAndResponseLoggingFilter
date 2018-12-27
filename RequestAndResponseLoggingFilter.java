@@ -26,7 +26,7 @@ import java.util.stream.Stream;
  * @see ContentCachingResponseWrapper
  */
 @Slf4j
-public class StubLoggingFilter extends OncePerRequestFilter {
+public class RequestAndResponseLoggingFilter extends OncePerRequestFilter {
     private static final List<MediaType> VISIBLE_TYPES = Arrays.asList(
         MediaType.valueOf("text/*"),
         MediaType.APPLICATION_FORM_URLENCODED,
