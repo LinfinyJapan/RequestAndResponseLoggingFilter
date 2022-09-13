@@ -46,11 +46,13 @@ public class RequestAndResponseLoggingFilter extends OncePerRequestFilter {
     private static final List<MediaType> VISIBLE_TYPES = Arrays.asList(
         MediaType.valueOf("text/*"),
         MediaType.APPLICATION_FORM_URLENCODED,
-        MediaType.APPLICATION_JSON,
         MediaType.APPLICATION_XML,
-        MediaType.valueOf("application/*+json"),
         MediaType.valueOf("application/*+xml"),
         MediaType.MULTIPART_FORM_DATA
+    );
+    private static final List<MediaType> JSON_TYPES = Arrays.asList(
+        MediaType.APPLICATION_JSON,
+        MediaType.valueOf("application/*+json")
     );
 
     @Override
@@ -122,7 +124,12 @@ public class RequestAndResponseLoggingFilter extends OncePerRequestFilter {
     private static void logContent(byte[] content, String contentType, String contentEncoding, String prefix) {
         val mediaType = MediaType.valueOf(contentType);
         val visible = VISIBLE_TYPES.stream().anyMatch(visibleType -> visibleType.includes(mediaType));
-        if (visible) {
+        val json = JSON_TYPES.stream().anyMatch(jsonType -> jsonType.includes(mediaType));
+        if (visible | json) {
+            if(json && contentEncoding!=null && "ISO-8859-1".equals(contentEncoding)){
+                // in JSON, the character code is UTF-8 when the character set is not specified.
+                contentEncoding = "UTF-8";
+            }
             try {
                 val contentString = new String(content, contentEncoding);
                 Stream.of(contentString.split("\r\n|\r|\n")).forEach(line -> log.info("{} {}", prefix, line));
