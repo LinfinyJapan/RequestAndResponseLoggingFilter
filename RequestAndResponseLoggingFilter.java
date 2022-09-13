@@ -125,7 +125,7 @@ public class RequestAndResponseLoggingFilter extends OncePerRequestFilter {
         val mediaType = MediaType.valueOf(contentType);
         val visible = VISIBLE_TYPES.stream().anyMatch(visibleType -> visibleType.includes(mediaType));
         val json = JSON_TYPES.stream().anyMatch(jsonType -> jsonType.includes(mediaType));
-        if (visible | json) {
+        if (visible || json) {
             if(json && contentEncoding!=null && "ISO-8859-1".equals(contentEncoding)){
                 // in JSON, the character code is UTF-8 when the character set is not specified.
                 contentEncoding = "UTF-8";
