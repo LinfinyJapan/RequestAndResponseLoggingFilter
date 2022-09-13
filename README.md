@@ -1,11 +1,9 @@
 # RequestAndResponseLoggingFilter
-Spring Web filter for logging request and response
-forked gist.github.com/int128/e47217bebdb4c402b2ffa7cc199307ba
-
-## probrem
+Forked "Spring Web filter for logging request and response"
 original gist https://gist.github.com/int128/e47217bebdb4c402b2ffa7cc199307ba
 
-There was a problem of garbled characters in json.
+## probrem
+The original had a problem with garbled characters in json.
 The reason is follows.
 
 - RFC8259 requires UTF-8 encoding for JSON
